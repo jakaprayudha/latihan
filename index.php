@@ -1,3 +1,7 @@
+<?php
+require 'view.php';
+$query = tampildata("SELECT * FROM tbl_barang");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,27 +26,22 @@
                <th>Nama Barang</th>
                <th>Satuan</th>
                <th>Harga Jual</th>
+               <th>Actions</th>
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <td>09123</td>
-               <td>Flasdisk 16GB</td>
-               <td>Pcs</td>
-               <td>75.000</td>
-            </tr>
-            <tr>
-               <td>09123</td>
-               <td>Flasdisk 16GB</td>
-               <td>Pcs</td>
-               <td>75.000</td>
-            </tr>
-            <tr>
-               <td>09123</td>
-               <td>Flasdisk 16GB</td>
-               <td>Pcs</td>
-               <td>75.000</td>
-            </tr>
+            <?php foreach ($query as $row) : ?>
+               <tr>
+                  <td><?= $row['kode'] ?></td>
+                  <td><?= $row['nama_barang'] ?></td>
+                  <td><?= $row['satuan'] ?></td>
+                  <td><?= $row['harga_jual'] ?></td>
+                  <td>
+                     <button class="btn btn-warning">Ubah</button>
+                     <button class="btn btn-danger">Hapus</button>
+                  </td>
+               </tr>
+            <?php endforeach ?>
          </tbody>
 
       </table>
